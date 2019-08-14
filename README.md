@@ -1,5 +1,5 @@
 # AcmeAutomator
-Network device management and testing tool (my retirement fun project ;-)
+Network device management and testing tool (my retirement fun project ;-)\r
 This project is a desktop application (anti-web app ;-) to manage and test network devices (either hosts, routers or switches).
 The project is still under development, so documentation is slim, bugs exist, new and old deprecated code prevails so use at your own risk.
 Python 3 (Python 2 not support) is the core language (anti-java coder here :-).
