@@ -1,0 +1,5 @@
+# This is an example of a playbook file.  Basically it holds master seed files
+# to be executed in a series of device tests.  Typically its when the tester
+# wants to cyce through a network, testing device relationships, effects on each other.
+192.168.1.130-ASR.Testcase.1.1.1-master-profile.prf
+192.168.1.4-MX.Testcase.1.1.1-master-profile.prf

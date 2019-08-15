@@ -1,0 +1,10 @@
+{"connect":{'sshchannel':{'ip':'10.168.1.4','username':'username','password':'password','secret':'','port':22,'verbose':False,'prompt':'username@SOMEPROMPT'},'retryconnection':{'loopcount':'2','delay':'1'}}};
+### INVENTORY COLLECTION
+{"command":{'device':'juniper','stdout':True,'fileoutput':True,'verbose':False,'delay':'6','commandpath':'.AcmeAutomator/profiles/','commands':'10.168.1.4-MX-show-chassis-formatted-inventory.prf','savepath':'.AcmeAutomator/myARCHIVES/OS-TESTING/10.168.1.4/','filename':'10.168.1.4-MX-show-chassis-inventory-formatted-data'}};
+{"analysis":{"AnalyzeFormattedInventoryData":{'verbose':False,'device':'juniper','stdout':True,'fileoutput':True,'commandpath':'.AcmeAutomator/profiles/','commands':'10.168.1.4-MX-show-chassis-formatted-inventory-detail-analyze-seed-file.prf','savepath':'.AcmeAutomator/myARCHIVES/OS-TESTING/10.168.1.4/','filename':'10.168.1.4-MX-xml-formatted-inventory-data'}}};
+# notes
+{"command":{'device':'juniper','stdout':True,'fileoutput':True,'verbose':False,'delay':'6','commandpath':'.AcmeAutomator/profiles/','commands':'10.168.1.4-MX-show-chassis-formatted-inventory.prf','savepath':'.AcmeAutomator/myARCHIVES/OS-TESTING/10.168.1.4/','filename':'10.168.1.4-BBBB-show-chassis-inventory-formatted-data'}};
+{"analysis":{"AnalyzeFormattedInventoryData":{'verbose':False,'device':'juniper','stdout':True,'fileoutput':True,'commandpath':'.AcmeAutomator/profiles/','commands':'10.168.1.4-BBBB-show-chassis-formatted-inventory-detail-analyze-seed-file.prf','savepath':'.AcmeAutomator/myARCHIVES/OS-TESTING/10.168.1.4/','filename':'10.168.1.4-MX-xml-formatted-inventory-data'}}};
+### Generate Rport
+{"analysis":{"InventoryAnalysisReport":{'verbose':False,'device':'juniper','stdout':True,'fileoutput':True,'commandpath':'.AcmeAutomator/myARCHIVES/OS-TESTING/10.168.1.4/','commands':'10.168.1.4-MX-xml-formatted-inventory-data','savepath':'.AcmeAutomator/myARCHIVES/OS-TESTING/10.168.1.4/','filename':'Inventory-report'}}};
+{"disconnect":{'sshchannel':{'ip':'10.168.1.4','verbose':False}}};

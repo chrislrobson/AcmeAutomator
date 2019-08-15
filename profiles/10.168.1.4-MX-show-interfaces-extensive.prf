@@ -1,0 +1,3 @@
+show interfaces detail | no-more
+show configuration | display set | no-more
+show route detail | no-more

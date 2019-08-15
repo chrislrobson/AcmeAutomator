@@ -1,0 +1,9 @@
+file delete 10.168.1.4-MX-configuration
+file copy scp://username@192.168.1.68/10.168.1.4/10.168.1.4-MX-configuration.cfg 10.168.1.4-MX-configuration
+file list 10.168.1.4-MX-configuration detail
+configure private
+delete
+load set 10.168.1.4-MX-configuration
+commit check
+commit
+exit

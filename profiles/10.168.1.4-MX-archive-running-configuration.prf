@@ -1,0 +1,3 @@
+file delete 10.168.1.4-MX-configuration
+show configuration | display set | save 10.168.1.4-MX-configuration
+file copy 10.168.1.4-MX-configuration scp://username@192.168.1.68/10.168.1.4/10.168.1.4-MX-configuration.cfg
