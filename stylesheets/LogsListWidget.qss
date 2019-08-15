@@ -1,0 +1,11 @@
+QListWidget{
+            color:#000000;
+            font: normal 10px;
+            border-style: groove;
+            border-width: 1px;
+            border-color: #000000;
+            border-radius: 4px;
+            padding: 0px;
+            margin: 0px;
+            background: #FFFFFF;
+           }

@@ -1,0 +1,15 @@
+QMenuBar{
+         color:#000080;
+         font: bold 18px;
+         self.font-style: bold;
+         self.font-family: Times New Roman;
+         border-style: solid;
+         border-width: 1px;
+         border-color: #000000;
+         border-radius: 2px;
+         padding-top: 0px;
+         padding-bottom: 0px;
+         margin-top: 0px;
+         margin-bottom: 0px;
+         background: #FFFFFF;
+        }

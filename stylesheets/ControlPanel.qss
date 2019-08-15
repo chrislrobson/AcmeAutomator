@@ -1,0 +1,28 @@
+QGroupBox {
+  font: bold 32px;
+  font-style: italic;
+  font-family: Times New Roman;
+  border-style: groove;
+  border-width: 4px;
+  border-color: #008000;
+  border-radius: 10px;
+  padding-top: 20px;
+  padding-bottom: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  background-color: #FFFFFF;
+  background-position: center;
+  background-image: url(/usr/local/TestbedTester/images/circuitdrawing-2.jpeg);
+}
+
+QGroupBox:title{
+  subcontrol-origin: margin;
+  subcontrol-position: top center;
+  border-style: groove;
+  border-width: 4px;
+  border-color: #008000;
+  border-right: none;
+  border-left: none;
+  border-bottom: none;
+  background: transparent;
+}

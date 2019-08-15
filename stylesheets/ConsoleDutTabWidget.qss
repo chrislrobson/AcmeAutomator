@@ -1,0 +1,10 @@
+QTabBar::tab::!selected{
+                        color: #4E4E4E;
+                       }
+                        QTabBar::tab::selected{
+                                               color: #000000;
+                                              }
+                        QWidget{
+                                border-style: solid;
+                                border-width: 1px;
+                               }

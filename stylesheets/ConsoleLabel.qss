@@ -1,0 +1,13 @@
+QLabel{
+       color:#005f00;
+       font: bold 18px;
+       self.font-style: bold;
+       self.font-family: Times New Roman;
+       border-style: solid;
+       border-width: 1px;
+       border-color: #000000;
+       border-radius: 6px;
+       padding: 0px;
+       margin: 0px;
+       background: #FFFFFF;
+      }

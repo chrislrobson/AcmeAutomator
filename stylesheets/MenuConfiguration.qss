@@ -1,0 +1,10 @@
+QMenu{
+      font: normal 18px;
+      border-style: solid;
+      border-width: 4px;
+      border-color: #008000;
+      border-radius: 6px;
+      padding: 0px;
+      margin: 0px;
+      background: #C6C6C6;
+     }
