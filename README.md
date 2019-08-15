@@ -16,3 +16,31 @@ This project attempts to automate, end-to-end, the network device testing proces
 A use case example (actually used in its early first release development stages) is router operating system upgrade validation and performance impact studies.  Specifically, this software was used to validate OS upgrade testing of Juniper MX series and CISCO ASR series routers.
 
 History.  The first release was a quick and dirty prototype to address a job requirement, written in Python 2 with very limited GUI features (using PyQt4).  Then after retiring and bored, I rewrote the entire system in Python 3 using PyQt5, added threading and many enhancements.  For a short 3 month period, I rewrote the system in C++(Qt5) but abandoned that effort when it didnt prove to add much benefit (and wasn't as much fun as Python coding :-), switching back Python 3.
+
+Example of command line run options:
+
+/usr/bin/python3 AcmeAutomator.py -l 1 -t 1 -d -U AcmeAutomator -P AcmeAutomator -R ${pwd}/ -C .AcmeAutomator/.AcmeAutomator-Templates-Directory -g .AcmeAutomator/.AcmeAutomator-Diagram-File-Directory -m .AcmeAutomator/.AcmeAutomator-Profiles-Directory -S InventoryKeywordSearchList -I .AcmeAutomator/myARCHIVES/INVENTORIES-EXCEL-REPORTS/ -F .AcemAutomator/myARCHIVES/INVENTORIES-SHOW-REPORTS/ -E .AcmeAutomator/.AcmeAutomator-Template-Seed-Directory
+
+Configuraiton notes:
+
+AcmeAutomator is completely flexiable were associated configuration and report files are located but it is suggested seed file, output files and stylesheet files be located in the following directory structure:
+
+AcmeAutomator root directory:
+
+$HOME/.AcmeAutomator
+
+Microsoft template files used for generating reports:
+
+$HOME/.AcmeAutomator/REPORT-TEMPLATES
+
+PyQt5 stylesheets:
+
+$HOME/.AcmeAutomator/stylesheets
+
+AcmeAutgomator "seed" files:
+
+$HOME/.AcmeAutomator/profiles
+
+Report file storage:
+
+$HOME/.AcmeAutomator/reports/[device name or IP]
