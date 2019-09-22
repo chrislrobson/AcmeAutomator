@@ -66,6 +66,10 @@ class Dictionary():
     except:
       pass  # assume done by connect command
     try:
+      self.cmd_dict['session'] = self.cmd_dict['session']
+    except:
+      self.cmd_dict['session'] = "NONE"
+    try:
       self.cmd_dict['delay'] = float(self.cmd_dict['delay'])
     except:
       self.cmd_dict['delay'] = .1
@@ -85,6 +89,10 @@ class Dictionary():
       self.cmd_dict['issave'] = self.cmd_dict['issave']
     except:
       self.cmd_dict['issave'] = True
+    try:
+      self.cmd_dict['fullscan'] = self.cmd_dict['fullscan']
+    except:
+      self.cmd_dict['fullscan'] = False
     try:
       self.cmd_dict['stdout'] = self.cmd_dict['stdout']
     except:

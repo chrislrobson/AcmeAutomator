@@ -141,6 +141,18 @@ decoders = \
      ("Output Filters:", "DecoderProcessor"),
      ("Alternate link address:", "DecoderProcessor"),
      ("L2 circuit cell bundle size:", "DecoderProcessor"),
+     ("Link ups:", "DecoderProcessor"),
+     ("Link downs:", "DecoderProcessor"),
+     ("Link vrf:", "DecoderProcessor"),
+     ("Link flags:", "DecoderProcessor"),
+     ("vrf:", "DecoderProcessor"),
+     ("flags:", "DecoderProcessor"),
+     ("HWaddr:", "HWaddr"),
+     ("index", "KeyValueSplit"),
+     ("pseudo", "KeyValueSplit"),
+     ("inet", "Inet"),
+     ("inet6", "Inet"),
+     ("Interface", "Interface"),
      # Generation is Juniper debug ergo ignore it
      ("Generation:", "NoOperation")
    ]

@@ -121,6 +121,7 @@ class Globals():
     RED_ONLY_MESSAGE = "<span style=\" color:red;\" >"
     RED_BOLD_ONLY_MESSAGE = "<span style=\"font-weight:bold; color:red;\" >"
     ORANGE_MESSAGE = "\"color\":\"orange\",\"weight\":\"extrabold\",\"fontsize\":\"12\",\"text\":\""
+    BLACK_MESSAGE = "\"color\":\"black\",\"weight\":\"normal\",\"fontsize\":\"12\",\"text\":\""
     RED_MESSAGE = "\"color\":\"red\",\"weight\":\"extrabold\",\"fontsize\":\"12\",\"text\":\""
     RED_MESSAGE_oldway = "<span style=\"font-size:12pt; font-weight:bold; color:red;\" >"
     BLUE_FONT1O_BOLD_MESSAGE = "<span style=\"font-size:10pt; font-weight:bold; color:blue;\" >"

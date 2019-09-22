@@ -132,10 +132,7 @@ class AnalyzeInterfaceData:
     """
     Process the statistcial data
     """
-    if self.device == "juniper":
-      self.analysis_data_file( self.analyze_seed_file_list, self.analsis_report_filename, self.analysis_report_fd)
-    elif self.device == "cisco":
-      self.analysis_data_file( self.analyze_seed_file_list, self.analsis_report_filename, self.analysis_report_fd)
+    self.analysis_data_file( self.analyze_seed_file_list, self.analsis_report_filename, self.analysis_report_fd)
     """
     All done
     """
