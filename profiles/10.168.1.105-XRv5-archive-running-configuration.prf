@@ -1,0 +1,3 @@
+delete disk0:/usr/10.168.1.105-XRv5-archived-running-configuration
+copy running-config disk0:/usr/10.168.1.105-XRv5-archived-running-configuration
+scp disk0:/usr/10.168.1.105-XRv5-archived-running-configuration testuser@192.168.1.68:/home/testuser/develop/AcmeAutomator/Python3/AcmeAutomator/.AcmeAutomator/myARCHIVES/OS-TESTING/10.168.1.105/10.168.1.105-XRv5-archived-running-configuration

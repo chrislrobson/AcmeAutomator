@@ -1,0 +1,1 @@
+sudo scp /etc/frr/frr.conf testuser@192.168.1.68:/home/testuser/develop/AcmeAutomator/Python3/AcmeAutomator/.AcmeAutomator/myARCHIVES/OS-TESTING/10.168.1.100/10.168.1.100-AcmeAutomatorFRR001-archived-running-configuration.cfg

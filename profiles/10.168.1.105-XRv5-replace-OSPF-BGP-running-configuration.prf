@@ -1,0 +1,56 @@
+### fixme SCP command for XRv not working, it appears this maybe an issue with OpenSSL "legacy" option incompatability
+### fixme needs more time to resolve so just use configure command line by line entries
+### fixme delete disk0:/usr/10.168.1.105-XRv5-archived-running-configuration
+### fixme scp testuser@192.168.1.68:/home/testuser/develop/AcmeAutomator/Python3/AcmeAutomator/.AcmeAutomator/myARCHIVES/OS-TESTING/10.168.1.105/10.168.1.105-XRv5-archived-running-configuration disk0:/usr/10.168.1.105-XRv5-archived-running-configuration
+### fixme configure
+### fixme load disk0:/usr/10.168.1.105-XRv5-archived-running-configuration
+### fixme commit replace
+### fixme end
+### notes:L notes notes
+### notes: ALL commands must be issued from the top level.  This avoids a send command timeout because the conifguration prompt changes.
+### notes: When issuing from the top level commands "must include full definition of an option" as show below.
+### notes: Another way to avoid the prompt problem is to issue the "root" command after each command.
+### notes: Or surround the command(s) with the AcmeAutomator seed file control string "#@@!!prompt [NEW PROMPT]"
+### notes: For example to create a ISIS router and its subcommand options, those optional commands must be issued as:
+### notes: router isis [WORD] is-type level
+### notes: router isis [WORD] interface GigabitEthernet 0/0/0/0 address-family ipv4 unicast metric 10
+admin config
+username test secret 0 testTest
+commit
+exit
+configure
+commit replace
+hostname XRv5
+domain name churchtonmaryland.us
+line console exec-timeout 0 0
+interface Loopback 0 ipv4 address 10.254.105.1 255.255.255.255
+interface MgmtEth 0/0/CPU0/0 ipv4 address 10.168.1.105 255.255.255.0
+interface GigabitEthernet 0/0/0/0 ipv4 address 10.168.100.2 255.255.255.0
+interface GigabitEthernet 0/0/0/1 ipv4 address 10.105.1.1 255.255.255.0
+interface GigabitEthernet 0/0/0/2 ipv4 address 10.105.2.1 255.255.255.0
+interface GigabitEthernet 0/0/0/3 ipv4 address 10.105.3.1 255.255.255.0
+interface GigabitEthernet 0/0/0/4 ipv4 address 10.105.4.1 255.255.255.0
+interface GigabitEthernet 0/0/0/5 ipv4 address 10.105.5.1 255.255.255.0
+interface GigabitEthernet 0/0/0/6 ipv4 address 10.105.6.1 255.255.255.0
+router static address-family ipv4 unicast 0.0.0.0/0 10.168.1.1
+router ospf XRv5
+router-id 10.254.105.1
+address-family ipv4 unicast
+area 100 interface GigabitEthernet 0/0/0/0
+area 100 interface GigabitEthernet 0/0/0/1
+area 100 interface GigabitEthernet 0/0/0/2
+area 100 interface GigabitEthernet 0/0/0/3
+area 100 interface GigabitEthernet 0/0/0/4
+area 100 interface GigabitEthernet 0/0/0/5
+area 100 interface GigabitEthernet 0/0/0/6
+root
+# fixme router bgp 130 bgp router-id 10.254.105.1
+# fixme router bgp 130 address-family ipv4 unicast
+# fixme root
+# fixme router bgp 130 neighbor 10.168.100.1 address-family ipv4 unicast
+# fixme root
+# fixme router bgp 130 neighbor 10.168.100.1 remote-as 130
+ssh server v2
+commit
+end
+
