@@ -15,6 +15,12 @@ This project attempts to automate, end-to-end, the network device testing proces
 
 A use case example (actually used in its early first release development stages) is router operating system upgrade validation and performance impact studies.  Specifically, this software was used to validate OS upgrade testing of Juniper MX series and CISCO ASR series routers.
 
+The profiles directory contains example of seed files used for developing this system.
+
+UPDATES:
+
+22Sep2019:  The PowerPoint file "AcmeAutoomator-BGP-OSPF-ISIS-Testbed.pptx" is the baseline testbed used for the development effort.  All routers in this testbed are virtual machines running as guest systems on a iMAC Pro host.  Typical router systems consist of a Fedora 30 XFCE spin running FFRouting router software.  The testbed topology is fashioned after what might be a typical WAN-LAN topology using Customer-Edge routers connecting through ISP Provider-Edge and Provider core routers.  CE routers are configured as OSPF routers.  The PE routers exchange routes through BGP.  The P router core routes using ISIS.
+
 History.  The first release was a quick and dirty prototype to address a job requirement, written in Python 2 with very limited GUI features (using PyQt4).  Then after retiring and bored, I rewrote the entire system in Python 3 using PyQt5, added threading and many enhancements.  For a short 3 month period, I rewrote the system in C++(Qt5) but abandoned that effort when it didnt prove to add much benefit (and wasn't as much fun as Python coding :-), switching back Python 3.
 
 Required shell variable:  export STYLESHEETHOME=/$HOME/.AcmeAutomator/stylesheets
