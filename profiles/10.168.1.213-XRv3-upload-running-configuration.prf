@@ -1,0 +1,48 @@
+### fixme SCP command for XRv not working, it appears this maybe an issue with OpenSSL "legacy" option incompatability
+### fixme needs more time to resolve so just use configure command line by line entries
+### fixme delete disk0:/usr/10.168.1.213-XRv3-archived-running-configuration
+### fixme scp testuser@192.168.1.68:/home/testuser/develop/AcmeAutomator/Python3/AcmeAutomator/.AcmeAutomator/myARCHIVES/OS-TESTING/10.168.1.213/10.168.1.213-XRv3-archived-running-configuration disk0:/usr/10.168.1.213-XRv3-archived-running-configuration
+### fixme configure
+### fixme load disk0:/usr/10.168.1.213-XRv3-archived-running-configuration
+### fixme commit replace
+### fixme end
+configure
+hostname XRv3
+domain name churchtonmaryland.us
+line console exec-timeout 0 0
+no interface Loopback 0
+no interface GigabitEthernet 0/0/0/0
+no interface GigabitEthernet 0/0/0/1
+no interface GigabitEthernet 0/0/0/2
+no interface GigabitEthernet 0/0/0/3
+no interface GigabitEthernet 0/0/0/4
+no interface GigabitEthernet 0/0/0/5
+no interface GigabitEthernet 0/0/0/6
+no router isis XRv5
+interface Loopback 0 ipv4 address 10.254.213.1 255.255.255.255
+interface MgmtEth 0/0/CPU0/0 ipv4 address 10.168.1.213 255.255.255.0
+interface GigabitEthernet 0/0/0/0 ipv4 address 10.168.80.2 255.255.255.0
+interface GigabitEthernet 0/0/0/1 ipv4 address 10.213.1.1 255.255.255.0
+interface GigabitEthernet 0/0/0/2 ipv4 address 10.213.2.1 255.255.255.0
+interface GigabitEthernet 0/0/0/3 ipv4 address 10.213.3.1 255.255.255.0
+interface GigabitEthernet 0/0/0/4 ipv4 address 10.213.4.1 255.255.255.0
+interface GigabitEthernet 0/0/0/5 ipv4 address 10.213.5.1 255.255.255.0
+interface GigabitEthernet 0/0/0/6 ipv4 address 10.213.6.1 255.255.255.0
+router static address-family ipv4 unicast 0.0.0.0/0 10.168.1.1
+router isis XRv3
+is-type level-1
+net 49.0101.0101.6800.1213.00
+address-family ipv4 unicast metric-style wide
+interface Loopback0 passive
+interface GigabitEthernet 0/0/0/0 address-family ipv4 unicast
+interface GigabitEthernet 0/0/0/1 address-family ipv4 unicast
+interface GigabitEthernet 0/0/0/2 address-family ipv4 unicast
+interface GigabitEthernet 0/0/0/3 address-family ipv4 unicast
+interface GigabitEthernet 0/0/0/4 address-family ipv4 unicast
+interface GigabitEthernet 0/0/0/5 address-family ipv4 unicast
+interface GigabitEthernet 0/0/0/6 address-family ipv4 unicast
+exit
+ssh server v2
+commit
+end
+

@@ -1,0 +1,6 @@
+{"connect":{'sshchannel':{'ip':'10.168.1.62','username':'testuser','password':'password','secret':'','port':22,'verbose':False,'prompt':'[OfficeiMac:~]$'},'retryconnection':{'loopcount':'2','delay':'1'}}};
+{"command":{'device':'cisco','verbose':False,'delay':'6','stdout':False,'fileoutput':False,'session':'starttelnet','commandpath':'.AcmeAutomator/profiles/','commands':'10.168.1.214-XRv4-start-VMwareFusion-cli.prf','user':'testuser','pwd':'password0987','prompt':'RP/0/0/CPU0:XRv4#'}};
+{"command":{'device':'cisco','verbose':False,'delay':'6','stdout':False,'fileoutput':False,'commandpath':'.AcmeAutomator/profiles/','commands':'Cisco-NoMore-command.prf'}};
+{"command":{'device':'cisco','verbose':False,'delay':'6','stdout':True,'fileoutput':True,'commandpath':'.AcmeAutomator/profiles/','commands':'10.168.1.214-XRv4-show-running-configuration.prf','savepath':'.AcmeAutomator/myARCHIVES/OS-TESTING/10.168.1.214/','filename':'10.168.1.214-XRv4-archived-OSPF-BGP-running-configuration'}};
+{"command":{'device':'cisco','verbose':False,'delay':'6','stdout':False,'fileoutput':False,'session':'stoptelnet','commandpath':'.AcmeAutomator/profiles/','commands':'10.168.1.214-XRv4-stop-VMwareFusion-cli.prf','prompt':'[OfficeiMac:~]$'}};
+{"disconnect":{'sshchannel':{'ip':'10.168.1.214','verbose':False}}};

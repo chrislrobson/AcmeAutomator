@@ -1,0 +1,10 @@
+{"connect":{'sshchannel':{'ip':'10.168.1.214','username':'testuser','password':'password0987','secret':'','port':22,'verbose':False,'prompt':'RP/0/0/CPU0:XRv4'},'retryconnection':{'loopcount':'2','delay':'1'}}};
+{"command":{'device':'cisco','verbose':False,'delay':'6','stdout':True,'fileoutput':False,'commandpath':'.AcmeAutomator/profiles/','commands':'Cisco-NoMore-command.prf'}};
+### fixme DOWNLOAD/UPLOAD TESTS
+### fixme SCP command for XRv not working, it appears this maybe an issue with OpenSSL "legacy" option incompatability
+### fixme {"command":{'device':'cisco','delay':'6','verbose':False,'stdout':False,'scpexactname':False,'fileoutput':False,'commandpath':'.AcmeAutomator/profiles/','commands':'10.168.1.212-XRv2-archive-running-configuration.prf','user':'test','pwd':'testTest'}};
+### fixme notes "uploads" must use the fullscan set True option so any errors prior to confguration overwriting can be detected!!!
+### fixme {"command":{'device':'cisco','delay':'6','verbose':True,'stdout':False,'fullscan':True,'scpexactname':True,'fileoutput':False,'commandpath':'.AcmeAutomator/profiles/','commands':'10.168.1.214-XRv4-upload-running-configuration.prf','user':'testuser','pwd':'password0987'}};
+{"command":{'device':'cisco','verbose':False,'delay':'6','stdout':True,'fileoutput':True,'commandpath':'.AcmeAutomator/profiles/','commands':'10.168.1.214-XRv4-show-running-configuration.prf','savepath':'.AcmeAutomator/myARCHIVES/OS-TESTING/10.168.1.214/','filename':'10.168.1.214-XRv4-archived-running-configuration'}};
+{"command":{'device':'cisco','delay':'6','verbose':False,'stdout':False,'fileoutput':False,'commandpath':'.AcmeAutomator/profiles/','commands':'10.168.1.214-XRv4-upload-running-configuration.prf'}};
+{"disconnect":{'sshchannel':{'ip':'10.168.1.214','verbose':False}}};
