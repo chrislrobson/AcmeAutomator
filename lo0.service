@@ -1,0 +1,26 @@
+# '0' becomes 'lo[##]' when running `systemctl start lo[##].service`
+# Remember to run `systemctl daemon-reload` after creating or editing this file.
+
+[Unit]
+Description=Dummy network interface for lo0
+After=network-pre.target systemd-sysctl.service
+Before=network.target frr.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+EnvironmentFile=/etc/sysconfig/logicalinterface0
+ExecStart=/sbin/ip link add lo0 address ${LOGICALINTERFACE} type dummy ; \
+/sbin/ip link set dev lo0 up ; \
+/sbin/ip addr add 10.254.254.1/32 dev lo0
+ExecStopPost=/sbin/ip link set dev lo0 down ; \
+/sbin/ip addr del 10.254.254.1/32 dev lo0 ; \
+/sbin/ip link del dev lo0
+# OPTIONAL 24-bit mask with broadcast works but FRRouting router doesnt really like it
+# because it expects and treats a dummy interface as 32-bit
+# OPTIONAL /sbin/ip addr add 10.254.254.1/24 broadcast 10.254.254.255 dev lo0
+# OPTIONAL /sbin/ip addr del 10.254.254.1/24 broadcast 10.254.254.255 dev lo0 ; \
+# DONT BRIDGE THIS MAYBE LATER! ExecStart=/usr/sbin/brctl addif 0 0-dummy
+
+[Install]
+WantedBy=multi-user.target
