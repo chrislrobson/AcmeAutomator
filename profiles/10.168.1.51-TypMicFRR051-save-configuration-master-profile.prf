@@ -1,0 +1,5 @@
+{"connect":{'sshchannel':{'ip':'10.168.1.51','username':'testuser','password':'password0987','secret':'','port':22,'verbose':False,'prompt':'[testuser@acmeautomatorfrr051 ~]$'},'retryconnection':{'loopcount':'2','delay':'1'}}};
+{"command":{'device':'frrouting','verbose':False,'delay':'6','stdout':True,'fileoutput':False,'commandpath':'.AcmeAutomator/profiles/','commands':'10.168.1.51-AcmeAutomatorFRR051-vtysh-cli.prf','user':'testuser','pwd':'password0987','prompt':'acmeautomatorfrr051.churchtonmaryland.us#'}};
+{"command":{'device':'frrouting','verbose':False,'delay':'6','stdout':True,'fileoutput':True,'commandpath':'.AcmeAutomator/profiles/','commands':'10.168.1.51-AcmeAutomatorFRR051-show-running-configuration.prf','savepath':'.AcmeAutomator/myARCHIVES/OS-TESTING/10.168.1.51/','filename':'10.168.1.51-AcmeAutomatorFRR051-archived-OSPF-BGP-running-configuration.cfg'}};
+{"command":{'device':'frrouting','verbose':False,'delay':'6','stdout':True,'fileoutput':False,'commandpath':'.AcmeAutomator/profiles/','commands':'10.168.1.51-AcmeAutomatorFRR051-exit-vtysh-cli.prf'}};
+{"disconnect":{'sshchannel':{'ip':'10.168.1.51','verbose':False}}};
