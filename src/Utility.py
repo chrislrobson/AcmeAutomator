@@ -13,7 +13,7 @@ HOWTO:
     # so the prompt scanner is ready to process before data is received.
     is_prompt = FindPrompt()
     # This is called by the low level data receiver for each block of data being received.
-    prompt_str = is_prompt.find_prompt( received_data, is_prompt.prompt_automaton )
+    prompt_str = is_prompt.find_prompt( received_data, is_prompt.prompt_automation )
     if prompt_str:
        print( "Yes" )
     else:
@@ -53,14 +53,14 @@ class Utility:
   def __init__(self, prompt_string_dictionary ):
     self.name = self.__class__.__name__
     self.prompt_keys = prompt_string_dictionary.prompts
-    self.prompt_automaton = self.make_prompt_automaton( self.prompt_keys )
+    self.prompt_automation = self.make_prompt_automation( self.prompt_keys )
   """"""
-  def make_prompt_automaton( self, prompt_keys ):
-    self.prompt_automaton = ahocorasick.Automaton( )    # initialize
+  def make_prompt_automation( self, prompt_keys ):
+    self.prompt_automation = ahocorasick.Automaton( )    # initialize
     for ( self.key, self.cat ) in prompt_keys:
-      self.prompt_automaton.add_word( self.key, ( self.cat, self.key ))  # add keys and categories
-    self.prompt_automaton.make_automaton()             # generate automaton
-    return( self.prompt_automaton )
+      self.prompt_automation.add_word( self.key, ( self.cat, self.key ))  # add keys and categories
+    self.prompt_automation.make_automaton()             # generate automaton
+    return( self.prompt_automation )
   """"""
   def get_prompt_length( self ):
     return( len( self.prompt_keys ) )
@@ -68,7 +68,7 @@ class Utility:
   def get_prompt_element( self, index ):
     return( self.prompt_keys[index] )
   """"""
-  def find_prompt(self, receive_data, prompt_automaton):
+  def find_prompt(self, receive_data, prompt_automation):
     self.found_last = []
     # todo-debug
     # todo-debug print(repr(receive_data))
@@ -81,7 +81,7 @@ class Utility:
     message.
     """
     self.received_prompt = re.sub( "\n+", " ", receive_data ).strip().split()[-1]
-    for self.end_index, (self.action, self.keyw) in prompt_automaton.iter(self.received_prompt):
+    for self.end_index, (self.action, self.keyw) in prompt_automation.iter(self.received_prompt):
       self.found_last.append(( self.keyw, self.action))
     """
     When nothing is found, a longer scan must be done starting from the
@@ -89,22 +89,39 @@ class Utility:
     the theory is we try avoiding scanning really huge amounts of data everytime
     """
     if not self.found_last:
-      for self.end_index, (self.action, self.keyw) in prompt_automaton.iter(receive_data):
+      for self.end_index, (self.action, self.keyw) in prompt_automation.iter(receive_data):
         self.found_last.append((self.keyw, self.action))
     return(self.found_last)
+
+  """
+  There is a special condition where the entire receive buffer needs scanning, namely, when uploading
+  a configuraiton file via the SCP command.  If the file is corrupted and the configuraiton command
+  returns an error, that error maybe followed by the expected prompt string.  When this occurs, if
+  the error isn't process correctly the routers configuration would be overwritten by the corrupted file and
+  commited ergo resulting in a bare metal bricked router.
+  """
+  def find_prompt_full_scan(self, receive_data, prompt_automation):
+    self.found_last = []
+    # todo-debug
+    # todo-debug print(repr(receive_data))
+    # todo-debug print("{}(receive_data): {}".format(self.name, receive_data))
+    # todo-debug
+    for self.end_index, (self.action, self.keyw) in prompt_automation.iter(receive_data):
+      self.found_last.append((self.keyw, self.action))
+    return (self.found_last)
   """
   This method is used when all the received data must be scanned when looking for a
   reply which is probably NOT the last few words in the received buffer.  For example,
   a password error such as "Permission denied" will included the prompt string as the 
   last received data but the program needs to detect the error message prior to the prompt.
   """
-  def scan_reply(self, receive_data, prompt_automaton):
+  def scan_reply(self, receive_data, prompt_automation):
     self.found_last = []
     # todo-debug
     # todo-debug print(repr(receive_data))
     # todo-debug print("{}(receive_data): {}".format(self.name, receive_data))
     # todo-debug
-    for self.end_index, (self.action, self.keyw) in prompt_automaton.iter(receive_data):
+    for self.end_index, (self.action, self.keyw) in prompt_automation.iter(receive_data):
       self.found_last.append((self.keyw, self.action))
     return(self.found_last)
   """"""
@@ -115,7 +132,7 @@ class Utility:
         break
     else:
       self.prompt_keys.append( ( key, value ) )
-      self.prompt_automaton = self.make_prompt_automaton( self.prompt_keys )
+      self.prompt_automation = self.make_prompt_automation( self.prompt_keys )
     return()
   """"""
   def replace_prompt_string( self, key, new_key, value ):
@@ -125,7 +142,7 @@ class Utility:
     except ValueError as error:
       pass
     self.prompt_keys.insert( self.index, ( new_key, value) )
-    self.prompt_automaton = self.make_prompt_automaton( self.prompt_keys )
+    self.prompt_automation = self.make_prompt_automation( self.prompt_keys )
     return()
   """"""
   def set_first_last_prompt_string( self, first = None, last = None ):
@@ -149,22 +166,22 @@ class Utility:
       self.prompt_keys.append( self.last_element )
     except Exception as error:
       pass
-    self.prompt_automaton = self.make_prompt_automaton( self.prompt_keys )
+    self.prompt_automation = self.make_prompt_automation( self.prompt_keys )
     return ()
   """
   Holds a database of test PASSED or FAILED test result information
   """
-  def make_test_results_automaton( self, prompt_keys ):
+  def make_test_results_automation( self, prompt_keys ):
     test_results_automaton = ahocorasick.Automaton( )    # initialize
     for ( key, cat1, cat2, cat3, cat4, cat5,cat6 ) in prompt_keys:
       test_results_automaton.add_word( key, ( cat6, cat5, cat4, cat3, cat2, cat1, key ) )  # add keys and categories
     test_results_automaton.make_automaton()             # generate automaton
     return( test_results_automaton )
   """"""
-  def find_test_results( self, receive_data, prompt_automaton ):
+  def find_test_results( self, receive_data, prompt_automation ):
     results_found = []
     try:
-      for end_index, ( value6, value5, value4, value3, value2, value1, keyw ) in prompt_automaton.iter( receive_data ):
+      for end_index, ( value6, value5, value4, value3, value2, value1, keyw ) in prompt_automation.iter( receive_data ):
         results_found.append( ( keyw, value1, value2, value3, value4, value5, value6 ) )
     except:
       pass
@@ -177,7 +194,7 @@ class Utility:
         break
     else:
       self.prompt_keys.append( ( key, value1, value2, value3, value4, value5, value6 ) )
-      self.prompt_automaton = self.make_test_results_automaton( self.prompt_keys )
+      self.prompt_automation = self.make_test_results_automation( self.prompt_keys )
     return()
   """"""
   def replace_test_results_string( self, key, new_key, value1, value2, value3, value4, value5, value6 ):
@@ -187,7 +204,7 @@ class Utility:
     except ValueError as error:
       pass
     self.prompt_keys.insert( self.index, ( new_key, value1, value2, value3, value4, value5, value6 ) )
-    self.prompt_automaton = self.make_test_results_automaton( self.prompt_keys )
+    self.prompt_automation = self.make_test_results_automation( self.prompt_keys )
     return ()
 """
 END OF FILE
