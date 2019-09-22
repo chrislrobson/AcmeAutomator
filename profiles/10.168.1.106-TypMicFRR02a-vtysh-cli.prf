@@ -1,0 +1,2 @@
+unset VTYSH_PAGER
+sudo vtysh
