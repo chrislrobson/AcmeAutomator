@@ -16,7 +16,6 @@
 System libraries
 """
 import subprocess
-from PyQt5 import QtWidgets
 """
 Home grown libraries
 """
@@ -28,7 +27,7 @@ DESCRIPTION:
 INPUT: 
 OUTPUT: 
 """
-class PauseButtonControl(QtWidgets.QWidget):
+class PauseButtonControl:
   def __init__(self, parent = None):
     super(PauseButtonControl, self).__init__()
     self.name = self.__class__.__name__
@@ -57,7 +56,6 @@ class PauseButtonControl(QtWidgets.QWidget):
       else:
         raise Exception(error)
     return ()
-
 """*******************************************************************************************
-End of 
+End of PauseButtonControl
 *******************************************************************************************"""

@@ -323,7 +323,7 @@ class InventoryAnalysisReport:
                 for self.row in self.ws.iter_rows():
                   for self.cell in self.row:
                     if isinstance( self.cell.value, str ):
-                      self.search_item_dict = self.is_search_item.find_prompt(self.cell.value, self.is_search_item.prompt_automaton)
+                      self.search_item_dict = self.is_search_item.find_prompt(self.cell.value, self.is_search_item.prompt_automation)
                       if self.search_item_dict:
                         self.table_of_content_list.append((self.cell.value, self.worksheet_name, self.cell.row, self.cell.column))
               except Exception as error:
@@ -373,7 +373,7 @@ class InventoryAnalysisReport:
       self.dictionary['loggerwidget'].emit(self.message)
       raise Exception
     return()
-"""
+"""**********************************************************************************************************
 End of File
-"""
+**********************************************************************************************************"""
 

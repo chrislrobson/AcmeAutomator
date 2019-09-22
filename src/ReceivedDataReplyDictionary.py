@@ -24,7 +24,7 @@ notes:  When building the strings found, the class "Utility" will return a list 
 the database LIST.  Its CRITICAL, therefore, to have seed files coded with the prompt keyword as exact as possible.
 For example, a given "complete prompt from a device might be as follows:
 "tester@devicename>"
-CRITICAL There for the seed file "prompt" keyword must be set to that exact string, "tester@devicename"
+notes CRITICAL: There for the seed file "prompt" keyword must be set to that exact string, "tester@devicename"
 HOWEVER, notice the seed file's "prompt" keyword maybe better without including the trailing ">" (greater-than)
 character.  Nor should the prompt keyword include a trailing "#" (number sign) character.  In this
 way, the script can process replies without concern about which subsystem it is within,
@@ -64,13 +64,16 @@ prompts = \
      ( "Do you want to overwrite? [no]", "SendYes"),
      ( "Reset ISIS process", "SendYes"),
      ( "Are you sure you want to continue connecting (yes/no)? ", "SendYes"),
+     ( "Are you sure you want to continue connecting (yes/no/[fingerprint])? ", "SendYes"),
+     ( "(config)#", "Continue"),
      ( "No such file or directory", "Continue"),
      ( "Building configuration..", "Continue"),
      ( "Disconnected", "Continue"),
-     ( "Connecting to", "ReceiveMoreData"), #FIXME handles broken F'ing Cisco crap which splits this string into two transmissions MORONS!
+     ( "Connecting to", "Continue"), #FIXME handles broken F'ing Cisco crap which splits SCP responds data into two transmissions MORONS!
      ( "Resolving mastership", "ResolvingMaster"),
      ( "Password:", "SendPassword"),
      ( "password:", "SendPassword"),
+     ( "[sudo] password for", "SendPassword"),
      ( "error: could not send local copy of file", "SendFileFailed"),
      ( "Permission denied", "PermissionDenied"),
      ( "Could not chdir to home directory", "IgnoreCommand"),
@@ -80,7 +83,13 @@ prompts = \
      ( "% Couldn't open file ", "SendAbort"),
      ( "can't read key type", "KeyFailed"),
      ( "Not ready for mastership switch, try after", "WaitProcessor"),
+     ( "Username:", "SendUsername"),
+     ( "Escape character is '^]'.", "SendReturn"),
+     ( "Press RETURN to get started.", "ReturnRequest"),
+     ( "telnet>", "TelnetPrompt"),
+     ("Connection closed by foreign host", "SendExit"),
+     ("logout", "Continue"),
    ]
-"""
+"""*************************************************************************************************
 END of FILE
-"""
+*************************************************************************************************"""

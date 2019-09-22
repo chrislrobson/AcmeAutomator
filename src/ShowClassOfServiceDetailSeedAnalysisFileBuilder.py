@@ -24,7 +24,7 @@ from Exceptions import *
 from SeedDictionary import SeedCommandDictionaryProcessor
 from Dictionary import ValidateAnalysisSeedFileDictionary
 from DecodeDataProcessor import DecoderInfo
-from DecoderFactory import __str__
+from Decoder import __str__
 """
 CLASS: ShowClassOfServiceSeedAnalysisFileBuilder:
 DESCRIPTION: Create "show class of service detail" Analysis Edit data

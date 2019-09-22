@@ -32,7 +32,7 @@ class PauseButtonTimed(QtWidgets.QWidget):
     Only critical settings here is X/Y/Width, 
     Height doesnt do anything, setFixedHeigth required
     """
-    self.setGeometry(900, 400, 900, 100)
+    self.setGeometry(900, 400, 1100, 100)
     self.setWindowFlag(Qt.FramelessWindowHint)
     layout = QtWidgets.QVBoxLayout(self)
     self.buttonContinue = QtWidgets.QPushButton("",self)
@@ -58,7 +58,7 @@ class PauseButtonTimed(QtWidgets.QWidget):
     self.show()
     while(True):
       self.timer = "{}\n{}".format(QDateTime.currentDateTime().toString(), str(time.process_time()))
-      self.buttonContinue.setText(self.timer)
+      self.buttonContinue.setText("{}\n{}".format(self.timer, "Select when finished making changes."))
       qApp.processEvents()
       time.sleep(0.05)
   """"""

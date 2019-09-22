@@ -43,7 +43,7 @@ class NormalizeData():
     self.dictionary = dictionary
     self.data_list = data.split( "\n" )
     self.prompt_str = self.data_list[-1]
-    self.reply_action = self.dictionary['processreply'].find_prompt( self.prompt_str, self.dictionary['processreply'].prompt_automaton )
+    self.reply_action = self.dictionary['processreply'].find_prompt( self.prompt_str, self.dictionary['processreply'].prompt_automation )
     if self.reply_action:
       self.data = ""
       for self.item in self.data_list[:-1]:

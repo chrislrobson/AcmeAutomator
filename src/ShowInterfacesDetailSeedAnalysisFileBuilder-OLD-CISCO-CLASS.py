@@ -24,7 +24,7 @@ from Exceptions import *
 from SeedDictionary import SeedCommandDictionaryProcessor,\
                                                                 SeedCommandlinePreprocessor
 from DecodeDataProcessor import DecoderInfo
-from DecoderFactory import __str__
+from Decoder import __str__
 """
 CLASS: ShowInterfacesDetailSeedAnalysisFileBuilder:
 DESCRIPTION: Create "show interface detail" Analysis Edit data
