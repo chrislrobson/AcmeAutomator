@@ -15,7 +15,9 @@ This project attempts to automate, end-to-end, the network device testing proces
 
 A use case example (actually used in its early first release development stages) is router operating system upgrade validation and performance impact studies.  Specifically, this software was used to validate OS upgrade testing of Juniper MX series and CISCO ASR series routers.
 
-The profiles directory contains example of files used by the system.  It is suggested the reader study the format and use of these files since they control the action of the system.  Yes, the files can be complex, to overcome this complexity, early protoype code development to create an automated file generator has started.  However, this is a low priority effort.
+The profiles directory contains example of files used by the system.  Typically, thesse files are referenced as "seed" files because they feed information to the software to control its actions.  It is suggested the reader study the format and use of these files since they control the action of the system.  Yes, the files can be complex, to overcome this complexity, early protoype code development to create an automated file generator has started.  However, this is a low priority effort.
+
+Also, when considering making seed files, I try making individual files for each Device Under Test (DUT).  That is, if the test calls for a delay between sessions, instead of making a single file to support multiple DUT, I'll create a delay seed file for each DUT.  In this way, each device can be control independendly with out having to later go back and re-engineer a new seed file.  Basically, the design of a test's "Playbook" and "Story" telling is completely flexible and up to the engineer.  Experience from past testing, when I was first using the software on actually testing, quickly taught me, very painfilly I might add, individual seed files per DUT was faster, and much easier to manage and control, despite increasing the number of seed files.
 
 UPDATES:
 
